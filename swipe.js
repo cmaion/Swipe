@@ -96,6 +96,25 @@ Swipe.prototype = {
 
   },
 
+  setupAfterResize: function() {
+    // Reset dynamic css to initial state
+    this.container.style.width = null;
+    this.element.style.width = null;
+    var index = this.slides.length;
+    while (index--) {
+      var el = this.slides[index];
+      el.style.width = null;
+      if (index != this.index) {
+        el.style.display = 'none';
+      } else {
+        el.style.display = null;
+      }
+    }
+
+    // Re-run setup()
+    this.setup();
+  },
+
   slide: function(index, duration) {
 
     var style = this.element.style;
@@ -178,7 +197,7 @@ Swipe.prototype = {
       case 'msTransitionEnd':
       case 'oTransitionEnd':
       case 'transitionend': this.transitionEnd(e); break;
-      case 'resize': this.setup(); break;
+      case 'resize': this.setupAfterResize(); break;
     }
   },
 
