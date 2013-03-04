@@ -279,7 +279,7 @@ Swipe.prototype = {
     var isValidSlide = 
           Number(new Date()) - this.start.time < 250      // if slide duration is less than 250ms
           && Math.abs(this.deltaX) > 20                   // and if slide amt is greater than 20px
-          || Math.abs(this.deltaX) > this.width/2,        // or if slide amt is greater than half the width
+          || Math.abs(this.deltaX) > this.width/3,        // or if slide amt is greater than third the width
 
     // determine if slide attempt is past start and end
         isPastBounds = 
